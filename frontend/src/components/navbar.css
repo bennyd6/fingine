@@ -1,0 +1,26 @@
+.nav-main{
+    width: 90vw;
+    height: 100px;
+    border-radius: 50px;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    position: fixed;
+    background-color: white;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.nav-main img{
+    width: 100px;
+}
+
+.nav-main a{
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+}
