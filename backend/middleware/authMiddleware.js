@@ -12,8 +12,8 @@ const authMiddleware = (req, res, next) => {
         // Remove "Bearer " prefix if present
         const tokenWithoutBearer = token.startsWith("Bearer ") ? token.split(" ")[1] : token;
         
-        // Verify the token
-        const decoded = verify(tokenWithoutBearer, "process.env.JWT_SECRET");
+        // Verify the token with the secret key from the environment variable
+        const decoded = verify(tokenWithoutBearer, process.env.JWT_SECRET);  // Corrected environment variable access
 
         if (!decoded || !decoded.id) {
             return res.status(400).json({ message: "Invalid token. Missing user details." });

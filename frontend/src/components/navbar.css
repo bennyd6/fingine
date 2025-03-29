@@ -19,8 +19,92 @@
     width: 100px;
 }
 
-.nav-main a{
-    color: black;
+.nav-main a {
     text-decoration: none;
+    color: black;
+    font-size: 18px;
     font-weight: 600;
+    padding: 10px;
+    position: relative; /* Required for positioning the underline */
+    transition: all 0.3s ease; /* Smooth transition for hover */
+}
+
+.nav-main a::after {
+    content: ''; /* Empty content for the underline */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px; /* Thickness of the underline */
+    background-color: black; /* Color of the underline */
+    transition: width 0.3s ease; /* Animate the underline width */
+}
+
+.nav-main a:hover {
+    transform: translateY(-5px); /* Move the link upwards */
+}
+
+.nav-main a:hover::after {
+    width: 100%; /* Extend the underline when hovered */
+}
+
+.nav-main a:focus {
+    outline: none;
+}
+
+.user-dropdown {
+    position: relative;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.user-dropdown:hover {
+    background-color: #f0f0f0;
+}
+
+/* Default dropdown hidden */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    min-width: 150px;
+    padding: 10px;
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, max-height 0.3s ease;
+}
+
+/* Show dropdown when visible */
+.user-dropdown:hover .dropdown-menu,
+.user-dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    max-height: 100px;
+}
+
+/* Logout button styling */
+.dropdown-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #ff4d4d;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-btn:hover {
+    background-color: #ff1a1a;
 }
