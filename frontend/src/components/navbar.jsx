@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import './navbar.css';
 import Logo from '../assets/fin-logo.png';
@@ -7,6 +7,7 @@ export default function Navbar() {
     const [userName, setUserName] = useState('');
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const dropdownRef = useRef(null); // Reference for detecting outside clicks
+    const location = useLocation(); // Get the current route
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -74,11 +75,11 @@ export default function Navbar() {
 
     return (
         <div className="nav-main">
-            <img src={Logo} alt="Logo" />
-            <Link to="/dashboard">Dashboard</Link>
-            <Link to="/analyze">Analyze</Link>
-            <Link to="/contact">Contact Us</Link>
-            
+            <a href="/"><img src={Logo} alt="Logo" /></a>
+            <Link to="/dashboard" className={location.pathname === "/dashboard" ? "active-link" : ""}>Dashboard</Link>
+            <Link to="/analyze" className={location.pathname === "/analyze" ? "active-link" : ""}>Analyze</Link>
+            <Link to="/contact" className={location.pathname === "/contact" ? "active-link" : ""}>Contact Us</Link>
+
             <div className="user-dropdown" onClick={toggleDropdown} ref={dropdownRef}>
                 <span>{userName || "Loading..."}</span>
                 {dropdownVisible && (
